@@ -6,7 +6,7 @@ import { Star, Crown, Sparkles } from "lucide-react"
 const PRODUCTS = [
   {
     tier: "Basic",
-    price: "Rp 25.000",
+    price: "Rp 30.000",
     icon: Sparkles,
     color: "from-[oklch(0.66_0.07_140)] to-[oklch(0.60_0.09_135)]",
     textColor: "text-[oklch(0.40_0.06_140)]",
@@ -24,7 +24,7 @@ const PRODUCTS = [
   },
   {
     tier: "Medium",
-    price: "Rp 40.000",
+    price: "Rp 35.000-40.000",
     icon: Star,
     color: "from-[oklch(0.68_0.13_55)] to-[oklch(0.62_0.15_48)]",
     textColor: "text-[oklch(0.45_0.10_50)]",
@@ -44,7 +44,7 @@ const PRODUCTS = [
   },
   {
     tier: "Premium",
-    price: "Rp 60.000",
+    price: "Rp 45.000",
     icon: Crown,
     color: "from-[oklch(0.58_0.15_40)] to-[oklch(0.50_0.17_35)]",
     textColor: "text-[oklch(0.35_0.10_38)]",
@@ -200,7 +200,7 @@ export function ProductsSection() {
                 <button
                   className={`mt-8 w-full rounded-xl bg-gradient-to-r ${product.color} px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
                 >
-                  Pesan Sekarang
+                  Pre-Order Sekarang
                 </button>
               </motion.article>
             )

@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "ReCraft — Ubah Limbah Jadi Karya",
+  title: "Create — Ubah Limbah Jadi Karya",
   description:
-    "ReCraft adalah proyek kewirausahaan mahasiswa (PMW) yang mengubah limbah tekstil menjadi produk fashion bernilai tinggi. Kreatif, berkelanjutan, dan berdampak.",
+    "Create adalah proyek kewirausahaan mahasiswa (PMW) yang mengubah limbah menjadi produk bernilai tinggi. Kreatif, berkelanjutan, dan berdampak.",
   generator: "v0.app",
-  keywords: ["PMW", "ReCraft", "Upcycling", "Fashion Berkelanjutan", "Limbah Tekstil", "Startup Mahasiswa"],
+  keywords: ["PMW", "Create", "Upcycling", "Fashion Berkelanjutan", "Limbah Tekstil", "Startup Mahasiswa"],
 }
 
 export default function RootLayout({
