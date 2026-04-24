@@ -1,79 +1,139 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { AlertTriangle, Lightbulb } from "lucide-react"
 
 export function AboutSection() {
   return (
     <section id="about" className="relative py-24 sm:py-32" aria-labelledby="about-heading">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 40% at 30% 50%, oklch(0.58 0.15 40 / 0.05), transparent 60%)",
+        }}
+      />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">— Tentang Kami</p>
-          <h2 id="about-heading" className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Limbah Kain, <br className="hidden sm:block" />
-            Menjadi Karya <span className="text-primary">Seni Tangan</span>.
+        <motion.div
+          className="mx-auto max-w-2xl text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+            — Tentang Kami
+          </p>
+          <h2
+            id="about-heading"
+            className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl"
+          >
+            Limbah Kain,{" "}
+            <br className="hidden sm:block" />
+            Menjadi Karya{" "}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Seni Tangan
+            </span>
+            .
           </h2>
-        </div>
+        </motion.div>
 
         <div className="mx-auto mt-16 grid max-w-5xl gap-6 lg:grid-cols-2">
-          {/* Problem card */}
-          <article className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-destructive/40">
+          {/* Masalah card */}
+          <motion.article
+            className="group relative overflow-hidden rounded-2xl border border-border bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <div
               aria-hidden="true"
-              className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-destructive/10 blur-2xl transition-opacity duration-300 group-hover:opacity-80"
+              className="absolute -right-8 -top-8 h-32 w-32 rounded-full blur-2xl transition-opacity duration-300 group-hover:opacity-80"
+              style={{ background: "oklch(0.58 0.15 40 / 0.12)" }}
             />
             <div className="relative">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-destructive/30 bg-destructive/10 text-destructive-foreground">
-                <AlertTriangle className="h-6 w-6 text-destructive" aria-hidden="true" />
+              <div
+                className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[oklch(0.58_0.15_40/0.1)] text-[oklch(0.45_0.10_38)]"
+              >
+                <AlertTriangle className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Masalah</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Limbah tekstil dan busana terus meningkat dan seringkali berakhir di Tempat Pembuangan Akhir (TPA) tanpa dimanfaatkan kembali. Generasi Z mencari produk <span className="font-semibold text-foreground">unik, personal, dan ramah lingkungan</span>, namun produsen massal hanya menawarkan aksesoris plastik dengan eksklusivitas rendah.
+                Limbah tekstil dan busana terus meningkat dan seringkali berakhir di
+                Tempat Pembuangan Akhir (TPA) tanpa dimanfaatkan kembali. Generasi Z
+                mencari produk{" "}
+                <span className="font-semibold text-foreground">
+                  unik, personal, dan ramah lingkungan
+                </span>
+                , namun produsen massal hanya menawarkan aksesoris plastik dengan
+                eksklusivitas rendah.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-destructive" aria-hidden="true" />
-                  <span>Sisa kain perca dari penjahit dan konveksi tidak termanfaatkan.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-destructive" aria-hidden="true" />
-                  <span>Gen Z ingin aksesoris yang tidak diproduksi massal dan punya cerita.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-destructive" aria-hidden="true" />
-                  <span>Kurangnya brand lokal yang mengkombinasikan seni & keberlanjutan.</span>
-                </li>
+                {[
+                  "Sisa kain perca dari penjahit dan konveksi tidak termanfaatkan.",
+                  "Gen Z ingin aksesoris yang tidak diproduksi massal dan punya cerita.",
+                  "Kurangnya brand lokal yang mengkombinasikan seni & keberlanjutan.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span
+                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.58_0.15_40)]"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-          </article>
+          </motion.article>
 
-          {/* Solution card */}
-          <article className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_40px_-12px] hover:shadow-primary/40">
+          {/* Solusi card */}
+          <motion.article
+            className="group relative overflow-hidden rounded-2xl border border-primary/20 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div
               aria-hidden="true"
-              className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/20 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+              className="absolute -right-8 -top-8 h-32 w-32 rounded-full blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+              style={{ background: "oklch(0.66 0.07 140 / 0.15)" }}
             />
             <div className="relative">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-primary/40 bg-primary/10 text-primary">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[oklch(0.66_0.07_140/0.12)] text-[oklch(0.40_0.06_140)]">
                 <Lightbulb className="h-6 w-6" aria-hidden="true" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Solusi Kami</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Crea&apos;Te mengolah limbah kain perca melalui konsep <span className="font-semibold text-foreground">upcycling</span> menjadi aksesori handmade modular 2-in-1 (gantungan kunci + boneka mini) dengan <span className="font-semibold text-foreground">lukisan manual custom art</span> dan teknik sasak artistik pada pinggiran kain.
+                Crea&apos;Te mengolah limbah kain perca melalui konsep{" "}
+                <span className="font-semibold text-foreground">upcycling</span>{" "}
+                menjadi aksesori handmade modular 2-in-1 (gantungan kunci + boneka
+                mini) dengan{" "}
+                <span className="font-semibold text-foreground">
+                  lukisan manual custom art
+                </span>{" "}
+                dan teknik sasak artistik pada pinggiran kain.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
-                  <span>Kerjasama dengan pengrajin lokal & konveksi untuk bahan baku limbah kain.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
-                  <span>Custom art dengan tinta tekstil, benang 3D, dan detail unik di tiap produk.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-primary" aria-hidden="true" />
-                  <span>Model pre-order untuk eksklusivitas dan mencegah stok berlebih.</span>
-                </li>
+                {[
+                  "Kerjasama dengan pengrajin lokal & konveksi untuk bahan baku limbah kain.",
+                  "Custom art dengan tinta tekstil, benang 3D, dan detail unik di tiap produk.",
+                  "Model pre-order untuk eksklusivitas dan mencegah stok berlebih.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span
+                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.66_0.07_140)]"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-          </article>
+          </motion.article>
         </div>
       </div>
     </section>
