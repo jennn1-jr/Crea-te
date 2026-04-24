@@ -29,7 +29,7 @@ export function SiteNavbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-lg"
+          ? "border-b border-border/60 bg-background/80 backdrop-blur-lg shadow-sm"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -37,13 +37,12 @@ export function SiteNavbar() {
         aria-label="Main navigation"
         className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-        {/* Logo */}
         <Link
           href="#home"
           className="group flex items-center gap-2 text-foreground transition-colors hover:text-primary"
           aria-label="Crea'Te home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105">
             <Palette className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="text-lg font-semibold tracking-tight">
@@ -51,32 +50,28 @@ export function SiteNavbar() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 <span>{link.label}</span>
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* CTA */}
         <div className="hidden md:block">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border border-primary bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_0_24px_-4px] hover:shadow-primary/60"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent px-5 py-2 text-sm font-semibold text-white shadow-md shadow-primary/15 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
           >
             Hubungi Kami
           </Link>
         </div>
 
-        {/* Mobile toggle */}
         <button
           type="button"
           className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground md:hidden"
@@ -88,7 +83,6 @@ export function SiteNavbar() {
         </button>
       </nav>
 
-      {/* Mobile panel */}
       <div
         className={cn(
           "md:hidden overflow-hidden border-b border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300",
@@ -101,7 +95,7 @@ export function SiteNavbar() {
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
               >
                 {link.label}
               </Link>
@@ -111,7 +105,7 @@ export function SiteNavbar() {
             <Link
               href="#contact"
               onClick={() => setOpen(false)}
-              className="block rounded-full bg-primary px-4 py-2 text-center text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              className="block rounded-full bg-gradient-to-r from-primary to-accent px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:shadow-lg"
             >
               Hubungi Kami
             </Link>
