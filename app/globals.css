@@ -4,57 +4,59 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Deep dark background with subtle blue undertone */
-  --background: oklch(0.14 0.01 240);
-  --foreground: oklch(0.98 0 0);
+  /* Warm cream/earthy palette — Crea'Te handmade brand */
+  --background: oklch(0.95 0.008 90);
+  --foreground: oklch(0.25 0.04 45);
 
-  --card: oklch(0.18 0.01 240);
-  --card-foreground: oklch(0.98 0 0);
+  --card: oklch(0.97 0.006 85);
+  --card-foreground: oklch(0.25 0.04 45);
 
-  --popover: oklch(0.18 0.01 240);
-  --popover-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.97 0.006 85);
+  --popover-foreground: oklch(0.25 0.04 45);
 
-  /* Electric cyan accent */
-  --primary: oklch(0.78 0.17 215);
-  --primary-foreground: oklch(0.14 0.01 240);
+  /* Terracotta primary */
+  --primary: oklch(0.58 0.15 40);
+  --primary-foreground: oklch(0.97 0.006 85);
 
-  --secondary: oklch(0.22 0.01 240);
-  --secondary-foreground: oklch(0.98 0 0);
+  /* Soft sage secondary */
+  --secondary: oklch(0.90 0.025 130);
+  --secondary-foreground: oklch(0.30 0.05 45);
 
-  --muted: oklch(0.22 0.01 240);
-  --muted-foreground: oklch(0.68 0.01 240);
+  --muted: oklch(0.91 0.012 80);
+  --muted-foreground: oklch(0.48 0.04 45);
 
-  --accent: oklch(0.78 0.17 215);
-  --accent-foreground: oklch(0.14 0.01 240);
+  /* Burnt orange accent */
+  --accent: oklch(0.68 0.13 55);
+  --accent-foreground: oklch(0.97 0.006 85);
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.26 0.01 240);
-  --input: oklch(0.22 0.01 240);
-  --ring: oklch(0.78 0.17 215);
+  --border: oklch(0.85 0.02 75);
+  --input: oklch(0.88 0.015 80);
+  --ring: oklch(0.58 0.15 40);
 
-  --chart-1: oklch(0.78 0.17 215);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --chart-1: oklch(0.58 0.15 40);
+  --chart-2: oklch(0.66 0.07 140);
+  --chart-3: oklch(0.68 0.13 55);
+  --chart-4: oklch(0.72 0.10 300);
+  --chart-5: oklch(0.45 0.08 30);
 
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  --sidebar: oklch(0.18 0.01 240);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.78 0.17 215);
-  --sidebar-primary-foreground: oklch(0.14 0.01 240);
-  --sidebar-accent: oklch(0.22 0.01 240);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.26 0.01 240);
-  --sidebar-ring: oklch(0.78 0.17 215);
+  --sidebar: oklch(0.97 0.006 85);
+  --sidebar-foreground: oklch(0.25 0.04 45);
+  --sidebar-primary: oklch(0.58 0.15 40);
+  --sidebar-primary-foreground: oklch(0.97 0.006 85);
+  --sidebar-accent: oklch(0.90 0.025 130);
+  --sidebar-accent-foreground: oklch(0.30 0.05 45);
+  --sidebar-border: oklch(0.85 0.02 75);
+  --sidebar-ring: oklch(0.58 0.15 40);
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -104,3 +106,5 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Falling elements are now driven by Framer Motion in hero-section.tsx */
