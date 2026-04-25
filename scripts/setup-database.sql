@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS team_members (
   photo_url VARCHAR(500),
   bio TEXT,
   responsibilities TEXT,
+  github_url VARCHAR(255),
+  instagram_url VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

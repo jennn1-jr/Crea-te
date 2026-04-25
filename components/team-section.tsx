@@ -3,7 +3,7 @@
 
 import { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
-import { Linkedin, Instagram, Loader2, AlertCircle } from "lucide-react"
+import { Github, Instagram, Loader2, AlertCircle } from "lucide-react"
 
 type Member = {
   id: number
@@ -11,6 +11,14 @@ type Member = {
   role: string
   photo_url: string
   bio: string
+  github_url?: string
+  instagram_url?: string
+}
+
+const SOCIAL_FALLBACK: Record<string, { github_url: string; instagram_url: string }> = {
+  "Mia Audina Ika Aprilani": { github_url: "#", instagram_url: "#" },
+  "Jenar Aditiya Bagaskara": { github_url: "https://github.com/jennn1-jr", instagram_url: "https://www.instagram.com/jenar_aditiya?igsh=MWxzdjVwbjN4Mm5heA==" },
+  "Muhammad Noor Abizar": { github_url: "#", instagram_url: "#" },
 }
 
 const FALLBACK_TEAM: Member[] = [
@@ -18,22 +26,28 @@ const FALLBACK_TEAM: Member[] = [
     id: 1,
     name: "Mia Audina Ika Aprilani",
     role: "Lead Designer",
-    photo_url: "/placeholder.svg",
+    photo_url: "/team/mia.jpg",
     bio: "Pemimpin kreatif yang menggambar custom art karakter pada kain",
+    github_url: "#",
+    instagram_url: "#",
   },
   {
     id: 2,
     name: "Jenar Aditiya Bagaskara",
     role: "Manajer Pemasaran & Keuangan",
-    photo_url: "/placeholder.svg",
+    photo_url: "/team/jenar.jpg",
     bio: "Mengelola strategi digital dan operasional keuangan",
+    github_url: "https://github.com/jennn1-jr",
+    instagram_url: "https://www.instagram.com/jenar_aditiya?igsh=MWxzdjVwbjN4Mm5heA==",
   },
   {
     id: 3,
     name: "Muhammad Noor Abizar",
     role: "Manajer Produksi",
-    photo_url: "/placeholder.svg",
+    photo_url: "/team/noor.jpg",
     bio: "Bertanggung jawab atas kelancaran proses produksi",
+    github_url: "#",
+    instagram_url: "#",
   },
 ]
 
@@ -94,9 +108,19 @@ export function TeamSection() {
         }
       }
 
-      const validMembers = members.filter(
-        (m) => m && typeof m.name === "string" && m.name.length > 0,
-      )
+      const validMembers = members
+        .filter((m) => m && typeof m.name === "string" && m.name.length > 0)
+        .map((m) => {
+          const fallback = SOCIAL_FALLBACK[m.name]
+          if (fallback) {
+            return {
+              ...m,
+              github_url: m.github_url || fallback.github_url,
+              instagram_url: m.instagram_url || fallback.instagram_url,
+            }
+          }
+          return m
+        })
 
       if (validMembers.length > 0) {
         setTeam(validMembers)
@@ -193,6 +217,16 @@ export function TeamSection() {
                 >
                   {/* Avatar */}
                   <div className="relative aspect-square overflow-hidden">
+                    {member.photo_url && member.photo_url !== "/placeholder.svg" ? (
+                      <img
+                        src={member.photo_url}
+                        alt={`Foto ${member.name}`}
+                        className="h-full w-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = "none"
+                        }}
+                      />
+                    ) : null}
                     <div
                       className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${color.bg}`}
                     >
@@ -219,14 +253,14 @@ export function TeamSection() {
                     </p>
                     <div className="flex items-center gap-2">
                       <a
-                        href="#"
-                        aria-label={`LinkedIn ${member.name}`}
+                        href={member.github_url || "#"}
+                        aria-label={`GitHub ${member.name}`}
                         className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
                       >
-                        <Linkedin className="h-4 w-4" aria-hidden="true" />
+                        <Github className="h-4 w-4" aria-hidden="true" />
                       </a>
                       <a
-                        href="#"
+                        href={member.instagram_url || "#"}
                         aria-label={`Instagram ${member.name}`}
                         className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
                       >

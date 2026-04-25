@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Palette, Instagram, Linkedin, Github, MapPin } from "lucide-react"
+import { Palette, Instagram, Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 const FOOTER_LINKS = [
   { href: "#home", label: "Home" },
@@ -81,14 +81,14 @@ export function SiteFooter() {
                 aria-label="WhatsApp"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
-                <Linkedin className="h-4 w-4" aria-hidden="true" />
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href="mailto:25051204344@mhs.unesa.ac.id"
                 aria-label="Email"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
-                <Github className="h-4 w-4" aria-hidden="true" />
+                <Mail className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
           </div>
