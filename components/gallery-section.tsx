@@ -17,7 +17,7 @@ const GALLERY_ITEMS = [
     category: "Medium",
   },
   {
-    src: "/placeholder.jpg",
+    src: "assets/premium.jpg",
     alt: "Premium Boneka Full Custom",
     caption: "Premium Tier - Full Custom",
     category: "Premium",

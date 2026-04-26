@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
+  { href: "#vision-misi", label: "Visi & Misi" },
   { href: "#product", label: "Product" },
   { href: "#gallery", label: "Galeri" },
   { href: "#preorder", label: "Cara Pesan" },
@@ -123,4 +124,3 @@ export function SiteNavbar() {
     </header>
   )
 }
-
