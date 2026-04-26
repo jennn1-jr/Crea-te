@@ -6,7 +6,7 @@ import { Mail, ArrowUpRight } from "lucide-react"
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32" aria-labelledby="contact-heading">
+    <section id="contact" className="relative overflow-x-hidden py-24 sm:py-32" aria-labelledby="contact-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-primary/20 bg-white p-10 text-center shadow-lg sm:p-16"

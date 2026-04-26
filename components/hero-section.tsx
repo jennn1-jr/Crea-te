@@ -313,7 +313,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative pt-32 pb-20 sm:pt-40 sm:pb-28"
+      className="relative overflow-x-hidden pt-32 pb-20 sm:pt-40 sm:pb-28"
       aria-labelledby="hero-heading"
     >
       {/* Background glow */}

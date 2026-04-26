@@ -46,8 +46,8 @@ const FALLBACK_TEAM: Member[] = [
     role: "Manajer Produksi",
     photo_url: "/team/noor.jpg",
     bio: "Bertanggung jawab atas kelancaran proses produksi",
-    github_url: "#",
-    instagram_url: "#",
+    github_url: " https://github.com/mnabizar",
+    instagram_url: "https://www.instagram.com/mnabizar",
   },
 ]
 

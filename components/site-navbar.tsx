@@ -10,6 +10,8 @@ const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#product", label: "Product" },
   { href: "#gallery", label: "Galeri" },
+  { href: "#preorder", label: "Cara Pesan" },
+  { href: "#faq", label: "FAQ" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ]
@@ -47,7 +49,7 @@ export function SiteNavbar() {
             <img
               src="/team/logo.png"
               alt=""
-              className="h-40 w-40 object-contain"
+              className="h-9 w-9 object-contain"
               aria-hidden="true"
             />
           </span>

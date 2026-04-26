@@ -6,6 +6,8 @@ const FOOTER_LINKS = [
   { href: "#about", label: "About" },
   { href: "#product", label: "Product" },
   { href: "#gallery", label: "Galeri" },
+  { href: "#preorder", label: "Cara Pesan" },
+  { href: "#faq", label: "FAQ" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ]
@@ -115,13 +117,7 @@ export function SiteFooter() {
               </a>
             </div>
 
-            <a
-              href="mailto:25051204344@mhs.unesa.ac.id"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-              25051204344@mhs.unesa.ac.id
-            </a>
+
           </div>
         </div>
 
