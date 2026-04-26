@@ -1,13 +1,27 @@
 import Link from "next/link"
-import { Palette, Instagram, Phone, Mail, MapPin, MessageCircle } from "lucide-react"
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 const FOOTER_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#product", label: "Product" },
+  { href: "#gallery", label: "Galeri" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ]
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.88-2.89 2.89 2.89 0 012.88-2.88c.2 0 .39.03.58.07V9.23a6.37 6.37 0 00-.58-.03A6.34 6.34 0 003 15.54a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.56a8.15 8.15 0 004.8 1.55V6.69h-1.89z" />
+    </svg>
+  )
+}
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -23,8 +37,13 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2"
               aria-label="Crea'Te home"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
-                <Palette className="h-5 w-5" aria-hidden="true" />
+              <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-primary/30 bg-primary/10">
+                <img
+                  src="/team/logo.png"
+                  alt=""
+                  className="h-7 w-7 object-contain"
+                  aria-hidden="true"
+                />
               </span>
               <span className="text-lg font-semibold tracking-tight">
                 Crea<span className="text-primary">&apos;Te</span>
@@ -70,14 +89,18 @@ export function SiteFooter() {
 
             <div className="mt-5 flex items-center gap-2">
               <a
-                href="https://www.instagram.com/create.arts"
-                aria-label="Instagram"
+                href="https://www.tiktok.com/@createartss"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
-                <Instagram className="h-4 w-4" aria-hidden="true" />
+                <TikTokIcon className="h-4 w-4" />
               </a>
               <a
                 href="https://wa.me/6281230594669"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="WhatsApp"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
@@ -91,6 +114,14 @@ export function SiteFooter() {
                 <Mail className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
+
+            <a
+              href="mailto:25051204344@mhs.unesa.ac.id"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
+              <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+              25051204344@mhs.unesa.ac.id
+            </a>
           </div>
         </div>
 
@@ -108,3 +139,4 @@ export function SiteFooter() {
     </footer>
   )
 }
+

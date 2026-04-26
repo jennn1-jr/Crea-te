@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Menu, X, Palette } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#product", label: "Product" },
+  { href: "#gallery", label: "Galeri" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ]
@@ -42,8 +43,13 @@ export function SiteNavbar() {
           className="group flex items-center gap-2 text-foreground transition-colors hover:text-primary"
           aria-label="Crea'Te home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105">
-            <Palette className="h-5 w-5" aria-hidden="true" />
+          <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-primary/30 bg-primary/10 transition-all duration-300 group-hover:bg-primary group-hover:scale-105">
+            <img
+              src="/team/logo.png"
+              alt=""
+              className="h-40 w-40 object-contain"
+              aria-hidden="true"
+            />
           </span>
           <span className="text-lg font-semibold tracking-tight">
             Crea<span className="text-primary">&apos;Te</span>
@@ -115,3 +121,4 @@ export function SiteNavbar() {
     </header>
   )
 }
+
