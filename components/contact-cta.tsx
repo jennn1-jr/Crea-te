@@ -1,10 +1,54 @@
 "use client"
 
-import Link from "next/link"
+import { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import { Mail, ArrowUpRight } from "lucide-react"
 
+const FALLBACK_CONTACT = {
+  whatsapp_url: "https://wa.me/6281230594669",
+  email: "createartsh@gmail.com",
+}
+
+type ContactData = {
+  whatsapp_url?: string
+  email?: string
+}
+
 export function ContactCTA() {
+  const [contact, setContact] = useState<ContactData>(FALLBACK_CONTACT)
+  const [loading, setLoading] = useState(true)
+
+  const fetchContact = useCallback(async () => {
+    setLoading(true)
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000)
+
+      const res = await fetch("/api/contact", { signal: controller.signal })
+      clearTimeout(timeoutId)
+
+      if (!res.ok) throw new Error(`API error: ${res.status}`)
+
+      const data = await res.json()
+
+      if (data && typeof data === "object" && !data.error) {
+        setContact({
+          ...FALLBACK_CONTACT,
+          ...data,
+        })
+      }
+    } catch (err) {
+      console.error("[ContactCTA] Failed to fetch contact:", err)
+      setContact(FALLBACK_CONTACT)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchContact()
+  }, [fetchContact])
+
   return (
     <section id="contact" className="relative overflow-x-hidden py-24 sm:py-32" aria-labelledby="contact-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -49,7 +93,7 @@ export function ContactCTA() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="https://wa.me/6281230594669"
+                href={contact.whatsapp_url || FALLBACK_CONTACT.whatsapp_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
@@ -58,7 +102,7 @@ export function ContactCTA() {
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="mailto:createartsh@gmail.com"
+                href={`mailto:${contact.email || FALLBACK_CONTACT.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-border bg-white/50 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-white/80 hover:-translate-y-0.5"

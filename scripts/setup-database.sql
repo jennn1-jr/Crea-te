@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS contacts (
   phone VARCHAR(20),
   address TEXT,
   instagram VARCHAR(100),
+  tiktok_url VARCHAR(255),
+  whatsapp_url VARCHAR(255),
   city VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -124,11 +126,13 @@ INSERT INTO products (name, tier, price, description, features, image_url) VALUE
 );
 
 -- Insert Contact Info (SESUAI PROPOSAL CREA'TE)
-INSERT INTO contacts (email, phone, address, instagram, city) VALUES
+INSERT INTO contacts (email, phone, address, instagram, city, tiktok_url, whatsapp_url) VALUES
 (
   '25051204344@mhs.unesa.ac.id',
   '081230594669',
   'Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi',
   '@create.arts',
-  'Ngawi'
+  'Ngawi',
+  'https://www.tiktok.com/@createartss',
+  'https://wa.me/6281230594669'
 );

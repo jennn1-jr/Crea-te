@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: "Create — Ubah Limbah Jadi Karya",
   description:
     "Create adalah proyek kewirausahaan mahasiswa (PMW) yang mengubah limbah menjadi produk bernilai tinggi. Kreatif, berkelanjutan, dan berdampak.",
-  generator: "v0.app",
   keywords: ["PMW", "Create", "Upcycling", "Fashion Berkelanjutan", "Limbah Tekstil", "Startup Mahasiswa"],
 }
 

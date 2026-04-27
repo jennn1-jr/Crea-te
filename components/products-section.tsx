@@ -33,7 +33,7 @@ const PRODUCTS = [
     borderHover: "hover:border-[oklch(0.68_0.13_55/0.5)]",
     shadowColor: "hover:shadow-[oklch(0.68_0.13_55/0.15)]",
     features: [
-      "Boneka gantungan kuci 2-in-1",
+      "Boneka gantungan kunci 2-in-1",
       "Custom karakter pilihan",
       "Kain perca bermotif",
       "2-3 warna tinta tekstil",

@@ -1,5 +1,8 @@
+"use client"
+
+import { useEffect, useState, useCallback } from "react"
 import Link from "next/link"
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
+import { Mail, MapPin, MessageCircle, Loader2 } from "lucide-react"
 
 const FOOTER_LINKS = [
   { href: "#home", label: "Home" },
@@ -11,6 +14,16 @@ const FOOTER_LINKS = [
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ]
+
+const FALLBACK_CONTACT = {
+  email: "createartsh@gmail.com",
+  phone: "081230594669",
+  address: "Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi",
+  instagram: "@create.arts",
+  city: "Ngawi",
+  tiktok_url: "https://www.tiktok.com/@createartss",
+  whatsapp_url: "https://wa.me/6281230594669",
+}
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -25,8 +38,50 @@ function TikTokIcon({ className }: { className?: string }) {
   )
 }
 
+type ContactData = {
+  email?: string
+  phone?: string
+  address?: string
+  city?: string
+  tiktok_url?: string
+  whatsapp_url?: string
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear()
+  const [contact, setContact] = useState<ContactData>(FALLBACK_CONTACT)
+  const [loading, setLoading] = useState(true)
+
+  const fetchContact = useCallback(async () => {
+    setLoading(true)
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000)
+
+      const res = await fetch("/api/contact", { signal: controller.signal })
+      clearTimeout(timeoutId)
+
+      if (!res.ok) throw new Error(`API error: ${res.status}`)
+
+      const data = await res.json()
+
+      if (data && typeof data === "object" && !data.error) {
+        setContact({
+          ...FALLBACK_CONTACT,
+          ...data,
+        })
+      }
+    } catch (err) {
+      console.error("[Footer] Failed to fetch contact:", err)
+      setContact(FALLBACK_CONTACT)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchContact()
+  }, [fetchContact])
 
   return (
     <footer className="border-t border-border bg-white/70">
