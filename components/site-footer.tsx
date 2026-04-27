@@ -109,7 +109,7 @@ export function SiteFooter() {
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
-                href="mailto:25051204344@mhs.unesa.ac.id"
+                href="mailto:createartsh@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Email"

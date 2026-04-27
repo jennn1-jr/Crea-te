@@ -58,7 +58,7 @@ export function ContactCTA() {
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="mailto:25051204344@mhs.unesa.ac.id"
+                href="mailto:createartsh@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-border bg-white/50 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-white/80 hover:-translate-y-0.5"
