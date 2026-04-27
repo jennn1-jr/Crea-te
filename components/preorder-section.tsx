@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MessageCircle, Palette, Scissors, Truck, HandHeart } from "lucide-react"
+import Link from "next/link"
+import { MessageCircle, Palette, Scissors, Truck, HandHeart, ArrowRight } from "lucide-react"
 
 const STEPS = [
   {
@@ -149,6 +150,22 @@ export function PreorderSection() {
               </motion.div>
             )
           })}
+        </motion.div>
+
+        <motion.div
+          className="mt-14 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Link
+            href="#contact"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+          >
+            Mulai Pre-Order Sekarang
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

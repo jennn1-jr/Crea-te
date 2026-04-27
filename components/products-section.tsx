@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { Star, Crown, Sparkles } from "lucide-react"
 
@@ -197,11 +198,12 @@ export function ProductsSection() {
                 </ul>
 
                 {/* CTA */}
-                <button
-                  className={`mt-8 w-full rounded-xl bg-gradient-to-r ${product.color} px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
+                <Link
+                  href="#contact"
+                  className={`mt-8 block w-full rounded-xl bg-gradient-to-r ${product.color} px-4 py-3 text-center text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
                 >
                   Pre-Order Sekarang
-                </button>
+                </Link>
               </motion.article>
             )
           })}
