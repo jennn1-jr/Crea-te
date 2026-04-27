@@ -29,11 +29,6 @@ const FAQS = [
     answer:
       "Bisa! Kami bekerja sama dengan jasa pengiriman lokal untuk pengiriman dalam kota, dan ekspedisi nasional untuk luar kota/pulau. Ongkir ditanggung pembeli sesuai lokasi.",
   },
-  {
-    question: "Apakah ada garansi jika produk cacat atau tidak sesuai?",
-    answer:
-      "Kami melakukan quality check sebelum pengiriman. Jika ada cacat produksi atau tidak sesuai dengan desain yang sudah disetujui, kamu bisa klaim garansi dalam waktu 3 hari setelah barang diterima.",
-  },
 ]
 
 const containerVariants = {
