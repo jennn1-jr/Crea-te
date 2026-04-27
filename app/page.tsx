@@ -6,6 +6,8 @@ import { FeaturesSection } from "@/components/features-section"
 import { ProductsSection } from "@/components/products-section"
 import { GallerySection } from "@/components/gallery-section"
 import { PreorderSection } from "@/components/preorder-section"
+import { TestimonialSection } from "@/components/testimonial-section"
+import { StatsSection } from "@/components/stats-section"
 import { FaqSection } from "@/components/faq-section"
 import { TeamSection } from "@/components/team-section"
 import { ContactCTA } from "@/components/contact-cta"
@@ -20,11 +22,13 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <AboutSection />
+        <StatsSection />
         <VisionMissionSection />
         <FeaturesSection />
         <ProductsSection />
         <GallerySection />
         <PreorderSection />
+        <TestimonialSection />
         <FaqSection />
         <TeamSection />
         <ContactCTA />

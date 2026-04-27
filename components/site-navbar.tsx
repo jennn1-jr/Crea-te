@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "#product", label: "Product" },
   { href: "#gallery", label: "Galeri" },
   { href: "#preorder", label: "Cara Pesan" },
+  { href: "#testimonials", label: "Review" },
   { href: "#faq", label: "FAQ" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
