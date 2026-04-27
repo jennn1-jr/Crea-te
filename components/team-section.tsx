@@ -254,6 +254,8 @@ export function TeamSection() {
                     <div className="flex items-center gap-2">
                       <a
                         href={member.github_url || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={`GitHub ${member.name}`}
                         className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
                       >
@@ -261,6 +263,8 @@ export function TeamSection() {
                       </a>
                       <a
                         href={member.instagram_url || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={`Instagram ${member.name}`}
                         className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
                       >

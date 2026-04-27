@@ -48,19 +48,23 @@ export function ContactCTA() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
+              <a
                 href="https://wa.me/6281230594669"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
               >
                 Chat WhatsApp
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="mailto:25051204344@mhs.unesa.ac.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-border bg-white/50 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-white/80 hover:-translate-y-0.5"
               >
                 Email Kami
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

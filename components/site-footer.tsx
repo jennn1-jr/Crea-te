@@ -110,6 +110,8 @@ export function SiteFooter() {
               </a>
               <a
                 href="mailto:25051204344@mhs.unesa.ac.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Email"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
