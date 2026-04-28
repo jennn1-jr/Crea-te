@@ -1,46 +1,57 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ImageIcon } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ImageIcon, Loader2 } from "lucide-react"
+import { useEffect, useState } from "react"
 
-const GALLERY_ITEMS = [
+// Fallback data jika API gagal
+const FALLBACK_GALLERY_ITEMS = [
   {
-    src: "/placeholder.jpg",
+    id: 1,
+    src: "assets/basic-1.jpg",
     alt: "Custom Boneka Gantungan Kunci - Basic Tier",
     caption: "Custom Boneka Gantungan Kunci",
     category: "Basic",
   },
   {
-    src: "/placeholder.jpg",
+    id: 2,
+    src: "assets/medium-1.jpg",
     alt: "Boneka Gantungan Kunci Medium - Custom Art",
     caption: "Medium Tier - Custom Art",
     category: "Medium",
   },
   {
+    id: 3,
     src: "assets/premium.jpg",
     alt: "Premium Boneka Full Custom",
     caption: "Premium Tier - Full Custom",
     category: "Premium",
   },
   {
-    src: "/placeholder.jpg",
+    id: 4,
+    src: "assets/proses-1.jpg",
     alt: "Detail Lukisan Tangan pada Kain",
     caption: "Detail Lukisan Tangan",
     category: "Proses",
   },
   {
-    src: "/placeholder.jpg",
+    id: 5,
+    src: "assets/proses-2.jpg",
     alt: "Teknik Sasak Pinggiran Kain",
     caption: "Teknik Sasak Artistik",
     category: "Proses",
   },
   {
-    src: "/placeholder.jpg",
+    id: 6,
+    src: "assets/premium-2.jpg",
     alt: "Packaging Gift Box Eksklusif",
     caption: "Packaging Gift Box",
     category: "Premium",
   },
 ]
+
+// Unique categories
+const CATEGORIES = ["Semua", "Basic", "Medium", "Premium", "Proses"]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -66,6 +77,41 @@ const itemVariants = {
 }
 
 export function GallerySection() {
+  const [allItems, setAllItems] = useState<any[]>([])
+  const [selectedCategory, setSelectedCategory] = useState("Semua")
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      setIsLoading(true)
+      try {
+        const url =
+          selectedCategory === "Semua"
+            ? "/api/project"
+            : `/api/project?category=${encodeURIComponent(selectedCategory)}`
+
+        const response = await fetch(url)
+        if (!response.ok) throw new Error("Failed to fetch gallery")
+
+        const data = await response.json()
+        setAllItems(Array.isArray(data) ? data : [])
+      } catch (error) {
+        console.error("Error fetching gallery:", error)
+        setAllItems(FALLBACK_GALLERY_ITEMS)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchGallery()
+  }, [selectedCategory])
+
+  // Filter items berdasarkan category (client-side fallback jika API belum support param)
+  const filteredItems =
+    selectedCategory === "Semua"
+      ? allItems
+      : allItems.filter((item) => item.category === selectedCategory)
+
   return (
     <section
       id="gallery"
@@ -109,45 +155,100 @@ export function GallerySection() {
           </p>
         </motion.div>
 
-        {/* Gallery grid */}
+        {/* Category filter */}
         <motion.div
-          className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
-          {GALLERY_ITEMS.map((item, i) => (
-            <motion.figure
-              key={i}
-              variants={itemVariants}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+                selectedCategory === cat
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+              }`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-secondary/30">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 flex items-center justify-center bg-primary/0 transition-all duration-300 group-hover:bg-primary/20">
-                  <ImageIcon className="h-8 w-8 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                </div>
-              </div>
-              <figcaption className="flex items-center justify-between p-4">
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {item.caption}
-                  </h3>
-                  <span className="mt-0.5 inline-block rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
-                    {item.category}
-                  </span>
-                </div>
-              </figcaption>
-            </motion.figure>
+              {cat}
+            </button>
           ))}
         </motion.div>
+
+        {/* Loading state */}
+        {isLoading && (
+          <div className="mt-16 flex items-center justify-center">
+            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+            <span className="ml-2 text-sm text-muted-foreground">
+              Memuat galeri…
+            </span>
+          </div>
+        )}
+
+        {/* Gallery grid */}
+        {!isLoading && (
+          <motion.div
+            className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            key={selectedCategory} // re-trigger animation on category change
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredItems.map((item) => (
+                <motion.figure
+                  key={item.id}
+                  variants={itemVariants}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary/30">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-primary/0 transition-all duration-300 group-hover:bg-primary/20">
+                      <ImageIcon className="h-8 w-8 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    </div>
+                  </div>
+                  <figcaption className="flex items-center justify-between p-4">
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground">
+                        {item.caption}
+                      </h3>
+                      <span className="mt-0.5 inline-block rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
+                        {item.category}
+                      </span>
+                    </div>
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
+
+        {/* Empty state */}
+        {!isLoading && filteredItems.length === 0 && (
+          <motion.p
+            className="mt-16 text-center text-sm text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Belum ada karya untuk kategori{" "}
+            <strong>{selectedCategory}</strong>.
+          </motion.p>
+        )}
 
         {/* Note about real photos */}
         <motion.p
