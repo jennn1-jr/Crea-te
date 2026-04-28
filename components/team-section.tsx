@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
@@ -51,22 +50,15 @@ const FALLBACK_TEAM: Member[] = [
   },
 ]
 
-const memberColors = [
-  { bg: "from-[oklch(0.58_0.15_40/0.12)] to-[oklch(0.58_0.15_40/0.04)]", text: "text-[oklch(0.45_0.10_38)]" },
-  { bg: "from-[oklch(0.66_0.07_140/0.12)] to-[oklch(0.66_0.07_140/0.04)]", text: "text-[oklch(0.40_0.06_140)]" },
-  { bg: "from-[oklch(0.68_0.13_55/0.12)] to-[oklch(0.68_0.13_55/0.04)]", text: "text-[oklch(0.45_0.10_50)]" },
-]
-
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
-      delay: i * 0.15,
-      // Ditambahkan "as const" di sini agar error hilang
+      duration: 0.5,
+      delay: i * 0.12,
       ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   }),
@@ -140,144 +132,123 @@ export function TeamSection() {
   }, [fetchTeam])
 
   return (
-    <section id="team" className="relative py-24 sm:py-32" aria-labelledby="team-heading">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 40% at 50% 40%, oklch(0.68 0.13 55 / 0.06), transparent 60%)",
-        }}
-      />
-
+    <section id="team" className="relative py-20 sm:py-28" aria-labelledby="team-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            — Tim Kami
+            — Tentang Kami
           </p>
           <h2
             id="team-heading"
-            className="mt-3 text-balance text-4xl font-bold tracking-tight sm:text-5xl"
+            className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl"
           >
             Wajah di balik{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Crea&apos;Te
             </span>
           </h2>
-          <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             Tiga mahasiswa kreatif bersatu menghadirkan merchandise handmade
             eksklusif dengan sentuhan seni dan kepedulian lingkungan.
           </p>
         </motion.div>
 
         {loading ? (
-          <div className="mt-16 flex flex-col items-center gap-3">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <div className="mt-12 flex flex-col items-center gap-3">
+            <Loader2 className="h-7 w-7 animate-spin text-primary" />
             <p className="text-sm text-muted-foreground">Memuat data tim...</p>
           </div>
         ) : error ? (
-          <div className="mt-16 flex flex-col items-center gap-3">
-            <AlertCircle className="h-8 w-8 text-[oklch(0.58_0.15_40)]" />
+          <div className="mt-12 flex flex-col items-center gap-3">
+            <AlertCircle className="h-7 w-7 text-[oklch(0.58_0.15_40)]" />
             <p className="text-sm text-muted-foreground">
               Gagal memuat data dari database. Menampilkan data default.
             </p>
             <button
               onClick={fetchTeam}
-              className="mt-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+              className="mt-1 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
             >
               Coba Lagi
             </button>
           </div>
         ) : team.length === 0 ? (
-          <div className="mt-16 text-center text-muted-foreground">
+          <div className="mt-12 text-center text-sm text-muted-foreground">
             Belum ada data tim
           </div>
         ) : (
           <ul
             role="list"
-            className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="mx-auto mt-12 flex flex-wrap justify-center gap-6"
           >
-            {team.map((member, i) => {
-              const color = memberColors[i % memberColors.length]
-              return (
-                <motion.li
-                  key={member.id}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-60px" }}
-                  variants={cardVariants}
-                >
-                  {/* Avatar */}
-                  <div className="relative aspect-square overflow-hidden">
-                    {member.photo_url && member.photo_url !== "/placeholder.svg" ? (
-                      <img
-                        src={member.photo_url}
-                        alt={`Foto ${member.name}`}
-                        className="h-full w-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none"
-                        }}
-                      />
-                    ) : null}
-                    <div
-                      className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${color.bg}`}
-                    >
-                      <span className={`text-5xl font-bold ${color.text}`}>
-                        {member.name?.charAt(0) ?? "?"}
-                      </span>
-                    </div>
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"
+            {team.map((member, i) => (
+              <motion.li
+                key={member.id}
+                className="flex w-60 flex-col items-center rounded-2xl border border-border bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={cardVariants}
+              >
+                {/* Small circular photo */}
+                <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full ring-2 ring-primary/15">
+                  {member.photo_url && member.photo_url !== "/placeholder.svg" ? (
+                    <img
+                      src={member.photo_url}
+                      alt={`Foto ${member.name}`}
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = "none"
+                      }}
                     />
-                  </div>
+                  ) : null}
+                </div>
 
-                  {/* Info */}
-                  <div className="relative flex flex-col gap-3 p-5">
-                    <div>
-                      <h3 className="text-base font-semibold text-foreground">
-                        {member.name}
-                      </h3>
-                      <p className="mt-0.5 text-sm text-primary">{member.role}</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {member.bio}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={member.github_url || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`GitHub ${member.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
-                      >
-                        <Github className="h-4 w-4" aria-hidden="true" />
-                      </a>
-                      <a
-                        href={member.instagram_url || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Instagram ${member.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
-                      >
-                        <Instagram className="h-4 w-4" aria-hidden="true" />
-                      </a>
-                    </div>
-                  </div>
-                </motion.li>
-              )
-            })}
+                {/* Info */}
+                <h3 className="mt-4 text-sm font-bold text-foreground">
+                  {member.name}
+                </h3>
+                <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                  {member.role}
+                </p>
+                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                  {member.bio}
+                </p>
+
+                {/* Social icons */}
+                <div className="mt-4 flex items-center gap-2">
+                  <a
+                    href={member.github_url || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`GitHub ${member.name}`}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
+                  >
+                    <Github className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                  <a
+                    href={member.instagram_url || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Instagram ${member.name}`}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
+                  >
+                    <Instagram className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                </div>
+              </motion.li>
+            ))}
           </ul>
         )}
       </div>
     </section>
   )
 }
+

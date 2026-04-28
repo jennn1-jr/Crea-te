@@ -5,14 +5,14 @@ import Link from "next/link"
 import { Mail, MapPin, MessageCircle, Loader2 } from "lucide-react"
 
 const FOOTER_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#product", label: "Product" },
-  { href: "#gallery", label: "Galeri" },
-  { href: "#preorder", label: "Cara Pesan" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#product", label: "Product" },
+  { href: "/#gallery", label: "Galeri" },
+  { href: "/#preorder", label: "Cara Pesan" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/team", label: "Tentang Kami" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 const FALLBACK_CONTACT = {
