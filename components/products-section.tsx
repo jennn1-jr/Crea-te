@@ -3,8 +3,16 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Star, Crown, Sparkles } from "lucide-react"
+import { useEffect, useState } from "react"
 
-const PRODUCTS = [
+const iconMap: Record<string, any> = {
+  Sparkles,
+  Star,
+  Crown,
+}
+
+// Fallback data jika API gagal
+const FALLBACK_PRODUCTS = [
   {
     tier: "Basic",
     price: "Rp 30.000",
@@ -26,7 +34,7 @@ const PRODUCTS = [
   {
     tier: "Medium",
     price: "Rp 35.000-40.000",
-    icon: Star,
+    icon: Sparkles,
     color: "from-[oklch(0.68_0.13_55)] to-[oklch(0.62_0.15_48)]",
     textColor: "text-[oklch(0.45_0.10_50)]",
     bgLight: "bg-[oklch(0.68_0.13_55/0.08)]",
@@ -41,7 +49,7 @@ const PRODUCTS = [
       "Teknik sasak pinggiran",
       "Packaging premium",
     ],
-    popular: true,
+    popular: false,
   },
   {
     tier: "Premium",
@@ -82,6 +90,36 @@ const cardVariants = {
 }
 
 export function ProductsSection() {
+  const [products, setProducts] = useState<any[]>(FALLBACK_PRODUCTS)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products')
+        if (!response.ok) throw new Error('Failed to fetch products')
+        
+        const data = await response.json()
+        
+        // Map API data dengan icon components
+        const formattedProducts = data.map((product: any) => ({
+          ...product,
+          icon: iconMap[product.icon] || Sparkles,
+          price: product.price || `Rp ${product.priceMin}${product.priceMax && product.priceMin !== product.priceMax ? `-${product.priceMax}` : ''}`,
+        }))
+        
+        setProducts(formattedProducts)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+        // Fallback ke hardcoded data jika API gagal
+        setProducts(FALLBACK_PRODUCTS)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [])
   return (
     <section
       id="product"
@@ -127,7 +165,7 @@ export function ProductsSection() {
 
         {/* Cards */}
         <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
-          {PRODUCTS.map((product, i) => {
+          {products.map((product, i) => {
             const Icon = product.icon
             return (
               <motion.article
@@ -174,7 +212,7 @@ export function ProductsSection() {
 
                 {/* Features */}
                 <ul className="flex-1 space-y-3">
-                  {product.features.map((feature) => (
+                  {product.features.map((feature: string) => (
                     <li
                       key={feature}
                       className="flex items-start gap-2.5 text-sm text-muted-foreground"
