@@ -28,6 +28,19 @@ const FAQS = [
     question: "Bisa kirim ke luar kota atau luar pulau?",
     answer:
       "Bisa! Kami bekerja sama dengan jasa pengiriman lokal untuk pengiriman dalam kota, dan ekspedisi nasional untuk luar kota/pulau. Ongkir ditanggung pembeli sesuai lokasi.",
+
+  },
+  {
+    question: "Apa yang dimaksud dengan teknik 'sasak' pada pinggiran boneka?",
+    answer:
+      "Teknik sasak adalah proses mengurai serat pinggiran kain secara manual untuk menghasilkan efek serabut artistik yang menjadi identitas visual khas produk kami.",
+
+  },
+  {
+    question: "Bisakah saya berkolaborasi untuk membuat desain karakter yang benar-benar baru?",
+    answer:
+      "Sangat bisa! Kami mendukung konsep Co-Creation di mana pelanggan bisa berinteraksi dan berdiskusi mengenai detail desain agar produk yang dihasilkan benar-benar merepresentasikan identitas pribadimu.",
+
   },
 ]
 
