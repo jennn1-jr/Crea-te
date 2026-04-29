@@ -35,7 +35,7 @@ const FEATURES: Feature[] = [
 export function FeaturesSection() {
   return (
     <section
-      id="product"
+id="features"
       className="relative border-y border-border bg-card/30 py-24 sm:py-32"
       aria-labelledby="features-heading"
     >

@@ -17,24 +17,6 @@ export function PromoVideoSection() {
       {/* Full viewport container */}
       <div className="mx-auto w-full max-w-none px-4 sm:px-6 lg:px-8">
         {/* Minimal header - subtle */}
-        <motion.div
-          className="mx-auto max-w-4xl text-center pb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            Video Promosi KWU
-          </p>
-          <h2 
-            id="promo-video-heading"
-            className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl bg-gradient-to-r from-primary via-accent to-[oklch(0.66_0.07_140)] bg-clip-text text-transparent"
-          >
-            Crea&apos;Te 2026
-          </h2>
-        </motion.div>
-
 
         {/* FULL SCREEN VIDEO - covers entire section dengan white frame shadow */}
         <motion.div
@@ -90,16 +72,6 @@ export function PromoVideoSection() {
 
       </div>
 
-      {/* Subtle caption */}
-      <motion.p 
-        className="mx-auto mt-8 max-w-2xl px-4 text-center text-xs text-muted-foreground/80 italic"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8 }}
-      >
-        Video background transparan • Fullscreen otomatis adaptasi
-      </motion.p>
     </section>
   )
 }

@@ -27,8 +27,8 @@ const FALLBACK_TEAM: Member[] = [
     role: "Lead Designer",
     photo_url: "/team/mia.jpg",
     bio: "Pemimpin kreatif yang menggambar custom art karakter pada kain",
-    github_url: "#",
-    instagram_url: "#",
+    github_url: "https://github.com/MyaruL",
+    instagram_url: "https://www.instagram.com/myariesh?igsh=eHlkcnVxdzBtNTJo&utm_source=qr",
   },
   {
     id: 2,
@@ -45,8 +45,8 @@ const FALLBACK_TEAM: Member[] = [
     role: "Manajer Produksi",
     photo_url: "/team/noor.jpg",
     bio: "Bertanggung jawab atas kelancaran proses produksi",
-    github_url: " https://github.com/mnabizar",
-    instagram_url: "https://www.instagram.com/mnabizar",
+    github_url: "https://github.com/mnabizar",
+    instagram_url: "https://www.instagram.com/mnabizar?igsh=MXIzMzkycWhxNmFlbw==",
   },
 ]
 
