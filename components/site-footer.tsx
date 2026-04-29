@@ -18,9 +18,8 @@ const FOOTER_LINKS = [
 const FALLBACK_CONTACT = {
   email: "createartsh@gmail.com",
   phone: "081230594669",
-  address: "Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi",
-  instagram: "@create.arts",
-  city: "Ngawi",
+  address: "Jalan Wide Raya, RT 02/RW 01, Ds. Sidowayah, Kec. Panekan, Magetan",
+  city: "Magetan",
   tiktok_url: "https://www.tiktok.com/@createartss",
   whatsapp_url: "https://wa.me/6281230594669",
 }
@@ -138,9 +137,9 @@ export function SiteFooter() {
                 aria-hidden="true"
               />
               <span>
-                Jalan Mahameru, RT 04/RW 03,
+                Jalan Wide Raya, RT 02/RW 01,
                 <br />
-                Ds. Ringinanom, Kec. Karangjati, Ngawi
+                Ds. Sidowayah, Kec. Panekan, Magetan
               </span>
             </address>
 

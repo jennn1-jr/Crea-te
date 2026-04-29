@@ -11,8 +11,8 @@ UPDATE contacts
 SET 
   email = '25051204344@mhs.unesa.ac.id',
   phone = '081230594669',
-  address = 'Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi',
-  city = 'Ngawi',
+  address: "Jalan Wide Raya, RT 02/RW 01, Ds. Sidowayah, Kec. Panekan, Magetan",
+  city: "Magetan",
   tiktok_url = 'https://www.tiktok.com/@createartss',
   whatsapp_url = 'https://wa.me/6281230594669'
 WHERE id = 1;
@@ -22,9 +22,8 @@ INSERT INTO contacts (email, phone, address, instagram, city, tiktok_url, whatsa
 SELECT 
   '25051204344@mhs.unesa.ac.id',
   '081230594669',
-  'Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi',
-  '@create.arts',
-  'Ngawi',
+  'Jalan Wide Raya, RT 02/RW 01, Ds. Sidowayah, Kec. Panekan, Magetan',
+  'Magetan',
   'https://www.tiktok.com/@createartss',
   'https://wa.me/6281230594669'
 WHERE NOT EXISTS (SELECT 1 FROM contacts WHERE id = 1);
