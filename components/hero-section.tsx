@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
+import { AnimatedCounter } from "@/components/animations/animated-counter"
 
 /* ═══════════════════════════════════════════
    Seeded PRNG — ensures server/client match
@@ -415,20 +416,9 @@ export function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {[
-              { value: "3", label: "Anggota Tim" },
-              { value: "3", label: "Tier Produk" },
-              { value: "\u221E", label: "Customisasi" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center">
-                <dt className="order-2 mt-1 text-xs leading-snug text-muted-foreground sm:text-sm">
-                  {stat.label}
-                </dt>
-                <dd className="order-1 font-mono text-2xl font-semibold text-foreground sm:text-3xl">
-                  {stat.value}
-                </dd>
-              </div>
-            ))}
+            <AnimatedCounter value={3} label="Anggota Tim" duration={4} />
+            <AnimatedCounter value={3} label="Tier Produk" duration={4} />
+            <AnimatedCounter value="∞" label="Customisasi" duration={4} />
           </motion.dl>
         </div>
       </div>

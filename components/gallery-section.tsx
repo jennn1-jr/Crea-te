@@ -258,7 +258,6 @@ export function GallerySection() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          Foto produk asli akan segera ditampilkan setelah produksi dimulai.
         </motion.p>
       </div>
     </section>
