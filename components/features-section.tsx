@@ -13,21 +13,21 @@ const FEATURES: Feature[] = [
     icon: Palette,
     title: "Custom Art Hand-Painted",
     description:
-      "Setiap karakter dilukis manual dengan tinta tekstil tahan lama di atas kain. Tidak ada dua produk yang benar-benar sama—tiap karya adalah unik dan personal untuk kamu.",
+      "Setiap karakter digambar secara manual, satu per satu like a tiny piece of art you can carry. Setiap detailnya unik dan memiliki cerita tersendiri.",
     tag: "01",
   },
   {
     icon: Leaf,
     title: "100% Limbah Kain Daur Ulang",
     description:
-      "Material dari sisa kain perca yang dikumpulkan dari pengrajin lokal & konveksi. Setiap pembelian membantu mengurangi limbah tekstil dan mendukung ekonomi sirkular.",
+      "Potongan kain yang sempat terlupakan kini diolah menjadi sesuatu yang lebih bermakna. Setiap tekstur dan warna menghadirkan keindahan dalam ketidaksempurnaan.",
     tag: "02",
   },
   {
     icon: ShieldCheck,
     title: "Detail Artistik 3D & Teknik Sasak",
     description:
-      "Benang hitam tebal berlapis menciptakan efek rambut tiga dimensi yang menonjol, sementara teknik sasak di pinggiran menghasilkan efek serabut artistik yang jadi identitas visual Crea'Te.",
+      "Benang berlapis dan jahitan pada tepian kain menciptakan dimensi yang lembut namun tetap berkarakter. Perpaduan sentuhan raw dan delicate yang terasa seimbang.",
     tag: "03",
   },
 ]

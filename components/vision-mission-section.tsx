@@ -57,28 +57,8 @@ export function VisionMissionSection() {
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Visi Kami</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Menjadi pelopor{" "}
-                <span className="font-semibold text-foreground">upcycling tekstil</span>{" "}
-                di Indonesia yang mengubah limbah kain menjadi karya seni tangan bernilai
-                tinggi, dicintai generasi Z, dan menginspirasi gaya hidup{" "}
-                <span className="font-semibold text-foreground">berkelanjutan</span>{" "}
-                bagi semua kalangan.
+                Menjadi pelopor upcycling tekstil di Indonesia dengan menghadirkan karya handmade bernilai tinggi yang dicintai generasi Z dan menginspirasi gaya hidup berkelanjutan.{" "}
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {[
-                  "Menciptakan brand lokal yang diakui secara nasional untuk inovasi upcycling.",
-                  "Menginspirasi generasi muda untuk peduli pada lingkungan melalui seni.",
-                  "Membuktikan bahwa limbah bisa menjadi karya yang estetis dan bernilai ekonomis.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.58_0.15_40)]"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </motion.article>
 
@@ -101,28 +81,9 @@ export function VisionMissionSection() {
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Misi Kami</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Kami berkomitmen untuk menjalankan setiap langkah dengan{" "}
-                <span className="font-semibold text-foreground">keberlanjutan</span>{" "}
-                dan <span className="font-semibold text-foreground">kolaborasi</span>{" "}
-                sebagai nilai utama dalam setiap produk yang kami ciptakan.
+                Mengubah limbah kain menjadi produk unik melalui kolaborasi, menghadirkan custom art bernilai, serta mendorong kesadaran akan fashion berkelanjutan melalui sistem produksi yang lebih bertanggung jawab.{" "}
+                
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {[
-                  "Mengumpulkan limbah kain perca dari pengrajin lokal & konveksi sebagai bahan baku utama.",
-                  "Memberdayakan pengrajin lokal melalui kolaborasi dan pelatihan keterampilan.",
-                  "Menciptakan produk handmade unik dengan custom art dan teknik sasak artistik.",
-                  "Mengedukasi generasi muda tentang pentingnya ekonomi sirkular dan fashion berkelanjutan.",
-                  "Menerapkan sistem pre-order untuk mengurangi overproduksi dan limbah.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.66_0.07_140)]"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </motion.article>
         </div>

@@ -24,7 +24,7 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-            — Tentang Kami
+            — Mengapa Kami Ada
           </p>
           <h2
             id="about-heading"
@@ -62,30 +62,8 @@ export function AboutSection() {
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Masalah</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Limbah tekstil dan busana terus meningkat dan seringkali berakhir di
-                Tempat Pembuangan Akhir (TPA) tanpa dimanfaatkan kembali. Generasi Z
-                mencari produk{" "}
-                <span className="font-semibold text-foreground">
-                  unik, personal, dan ramah lingkungan
-                </span>
-                , namun produsen massal hanya menawarkan aksesoris plastik dengan
-                eksklusivitas rendah.
+                Limbah tekstil terus meningkat dan sering terbuang sia-sia, sementara Generasi Z justru mencari produk yang unik, personal, dan bermakna. Sayangnya, pasar masih didominasi aksesoris massal yang minim nilai cerita dan keberlanjutan.{" "}
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {[
-                  "Sisa kain perca dari penjahit dan konveksi tidak termanfaatkan.",
-                  "Gen Z ingin aksesoris yang tidak diproduksi massal dan punya cerita.",
-                  "Kurangnya brand lokal yang mengkombinasikan seni & keberlanjutan.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.58_0.15_40)]"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </motion.article>
 
@@ -108,29 +86,9 @@ export function AboutSection() {
               </div>
               <h3 className="mt-6 text-xl font-semibold text-foreground">Solusi Kami</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Crea&apos;Te mengolah limbah kain perca melalui konsep{" "}
-                <span className="font-semibold text-foreground">upcycling</span>{" "}
-                menjadi aksesori handmade modular 2-in-1 (gantungan kunci + boneka
-                mini) dengan{" "}
-                <span className="font-semibold text-foreground">
-                  lukisan manual custom art
-                </span>{" "}
-                dan teknik sasak artistik pada pinggiran kain.
+                Crea'Te mengubah limbah kain perca menjadi aksesori handmade 2-in-1 yang unik dengan custom art di setiap detailnya. Berkolaborasi dengan pengrajin lokal, kami menghadirkan produk eksklusif melalui sistem pre-order yang lebih berkelanjutan.{" "}
               </p>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {[
-                  "Kerjasama dengan pengrajin lokal & konveksi untuk bahan baku limbah kain.",
-                  "Custom art dengan tinta tekstil, benang 3D, dan detail unik di tiap produk.",
-                  "Model pre-order untuk eksklusivitas dan mencegah stok berlebih.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[oklch(0.66_0.07_140)]"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
               </ul>
             </div>
           </motion.article>

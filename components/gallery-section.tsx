@@ -8,16 +8,16 @@ import { useEffect, useState } from "react"
 const FALLBACK_GALLERY_ITEMS = [
   {
     id: 1,
-    src: "assets/basic-1.jpg",
-    alt: "Custom Boneka Gantungan Kunci - Basic Tier",
-    caption: "Custom Boneka Gantungan Kunci",
+    src: "assets/basic.jpg",
+    alt: "Basic Tier Full Custom - Basic Tier",
+    caption: "Basic Tier - Full Custom",
     category: "Basic",
   },
   {
     id: 2,
-    src: "assets/medium-1.jpg",
+    src: "assets/medium.jpg",
     alt: "Boneka Gantungan Kunci Medium - Custom Art",
-    caption: "Medium Tier - Custom Art",
+    caption: "Medium Tier - Full Custom ",
     category: "Medium",
   },
   {
@@ -36,17 +36,17 @@ const FALLBACK_GALLERY_ITEMS = [
   },
   {
     id: 5,
+    src: "assets/packaging.jpg",
+    alt: "Packaging Box Eksklusif",
+    caption: "packaging Box ",
+    category: "Packaging",
+  },
+  {
+    id: 6,
     src: "assets/proses-2.jpg",
     alt: "Teknik Sasak Pinggiran Kain",
     caption: "Teknik Sasak Artistik",
     category: "Proses",
-  },
-  {
-    id: 6,
-    src: "assets/premium-2.jpg",
-    alt: "Packaging Gift Box Eksklusif",
-    caption: "Packaging Gift Box",
-    category: "Premium",
   },
 ]
 
