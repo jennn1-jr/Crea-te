@@ -1,9 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Play, Volume2 } from "lucide-react"
+import { Play, Volume2, Pause } from "lucide-react"
+import { useRef, useState } from "react"
 
 export function PromoVideoSection() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play()
+        setIsPlaying(true)
+      } else {
+        videoRef.current.pause()
+        setIsPlaying(false)
+      }
+    }
+  }
+
   return (
     <section 
       id="promo-video"
@@ -35,9 +51,9 @@ export function PromoVideoSection() {
           }}
         >
           <video
+            ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover !m-0 cursor-pointer transition-all duration-700 group-hover:scale-[1.02] rounded-xl lg:rounded-2xl"
             style={{
-              // Full coverage dengan transparent bg
               width: '100%',
               height: '100%',
               background: 'transparent',
@@ -46,25 +62,33 @@ export function PromoVideoSection() {
             muted
             loop
             playsInline
+            autoPlay
             controls={false}
             preload="metadata"
           >
-            {/* Ganti src dengan video KWU kamu */}
             <source src="/video/kwu-promo.mp4" type="video/mp4" />
             <source src="/video/kwu-promo.webm" type="video/webm" />
             Video tidak didukung.
           </video>
 
           {/* Custom play overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm opacity-0 transition-all duration-500 group-hover:opacity-100">
+          <button
+            onClick={togglePlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm opacity-0 transition-all duration-500 group-hover:opacity-100 cursor-pointer"
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
             <div className="flex flex-col items-center gap-3 rounded-2xl bg-white/95 px-8 py-6 backdrop-blur-2xl shadow-2xl border-2 border-white/60">
-              <Play className="h-12 w-12 text-primary drop-shadow-2xl" />
+              {isPlaying ? (
+                <Pause className="h-12 w-12 text-primary drop-shadow-2xl" />
+              ) : (
+                <Play className="h-12 w-12 text-primary drop-shadow-2xl" />
+              )}
               <div className="flex items-center gap-2 text-sm font-semibold text-foreground/90">
                 <Volume2 className="h-4 w-4" />
-                <span>Mainkan Video</span>
+                <span>{isPlaying ? "Pause Video" : "Mainkan Video"}</span>
               </div>
             </div>
-          </div>
+          </button>
 
           {/* Inner glow effect */}
           <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 opacity-50 blur-xl -z-10" />
@@ -75,4 +99,3 @@ export function PromoVideoSection() {
     </section>
   )
 }
-
