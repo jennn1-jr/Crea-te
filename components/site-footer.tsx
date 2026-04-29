@@ -183,7 +183,7 @@ export function SiteFooter() {
           </p>
           <p className="text-xs text-muted-foreground">
             Dibuat dengan{" "}
-            <span className="text-primary">&hearts;</span> oleh Tim PMW
+            <span className="text-primary">&hearts;</span> oleh Tim 
             Crea&apos;Te | Universitas Negeri Surabaya.
           </p>
         </div>
