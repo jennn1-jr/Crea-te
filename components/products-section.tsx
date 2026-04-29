@@ -11,7 +11,7 @@ const iconMap: Record<string, any> = {
   Crown,
 }
 
-// Fallback data jika API gagal
+// Fallback data jika API gagal & Template Warna UI
 const FALLBACK_PRODUCTS = [
   {
     tier: "Basic",
@@ -23,11 +23,14 @@ const FALLBACK_PRODUCTS = [
     borderHover: "hover:border-[oklch(0.66_0.07_140/0.5)]",
     shadowColor: "hover:shadow-[oklch(0.66_0.07_140/0.15)]",
     features: [
-      "Gantungan kunci mini",
-      "Desain karakter standar",
-      "Kain perca polos",
-      "1 warna tinta tekstil",
-      "Packaging sederhana",
+      "Head only",
+      "Simple bentuk & karakter",
+      "Bisa karakter hewan",
+      "Perca polos",
+      "2-3 warna",
+      "Simple sasak",
+      "Packaging premium",
+      "Free stiker",
     ],
     popular: false,
   },
@@ -41,13 +44,15 @@ const FALLBACK_PRODUCTS = [
     borderHover: "hover:border-[oklch(0.68_0.13_55/0.5)]",
     shadowColor: "hover:shadow-[oklch(0.68_0.13_55/0.15)]",
     features: [
-      "Boneka gantungan kunci 2-in-1",
-      "Custom karakter pilihan",
-      "Kain perca bermotif",
-      "2-3 warna tinta tekstil",
-      "Detail benang 3D rambut",
-      "Teknik sasak pinggiran",
+      "Half body",
+      "Simple full body",
+      "Perca polos",
+      "Detail rambut",
+      "Free 1 manik-manik",
+      "2-5 warna",
+      "Full Sasak",
       "Packaging premium",
+      "Free stiker",
     ],
     popular: false,
   },
@@ -61,17 +66,19 @@ const FALLBACK_PRODUCTS = [
     borderHover: "hover:border-[oklch(0.58_0.15_40/0.5)]",
     shadowColor: "hover:shadow-[oklch(0.58_0.15_40/0.15)]",
     features: [
-      "Boneka gantungan kunci 2-in-1 full custom",
-      "Desain eksklusif + nama personal",
-      "Kain premium pilihan konveksi",
-      "Multi-warna tinta tekstil",
-      "Detail benang 3D rambut premium",
-      "Teknik sasak + hiasan tambahan",
-      "Gantungan logam premium",
-      "Packaging gift box eksklusif",
-      "Kartu ucapan handmade",
+      "Full body",
+      "Front & back design",
+      "High detail",
+      "Perca polos",
+      "Perca request",
+      "Detail rambut",
+      "Free 2 Manik-manik",
+      "Multi warna",
+      "Full sasak",
+      "Packaging premium",
+      "Free Stiker",
     ],
-    popular: false,
+    popular: false, 
   },
 ]
 
@@ -101,17 +108,42 @@ export function ProductsSection() {
         
         const data = await response.json()
         
-        // Map API data dengan icon components
-        const formattedProducts = data.map((product: any) => ({
-          ...product,
-          icon: iconMap[product.icon] || Sparkles,
-          price: product.price || `Rp ${product.priceMin}${product.priceMax && product.priceMin !== product.priceMax ? `-${product.priceMax}` : ''}`,
-        }))
+        const formattedProducts = data.map((product: any) => {
+          
+          const styleTemplate = FALLBACK_PRODUCTS.find(
+            (fallback) => fallback.tier.toLowerCase() === product.tier?.toLowerCase()
+          ) || FALLBACK_PRODUCTS[0];
+
+          // 1. PAKSA JADI STRING (Teks Murni)
+          // Entah API ngasih Array atau String, kita sikat jadi Teks
+          let rawFeatures = Array.isArray(product.features) 
+            ? product.features.join('\n') 
+            : String(product.features || '');
+
+          // 2. POTONG BERDASARKAN ENTER & BERSIHKAN TANDA STRIP MANUAL
+          let parsedFeatures = rawFeatures
+            .split(/\r?\n/) // Potong setiap baris baru
+            .map((f: string) => f.replace(/^-\s*/, '').trim()) // Hilangkan tanda strip (-) di depan kata biar rapi karena udah pakai centang
+            .filter((f: string) => f.length > 0); // Buang baris yang isinya kosong
+
+          const formatRupiah = (angka: number) => new Intl.NumberFormat('id-ID').format(angka);
+          let displayPrice = product.price 
+            ? `Rp ${formatRupiah(product.price)}` 
+            : `Rp ${formatRupiah(product.price_min || product.priceMin)}${(product.price_max || product.priceMax) && (product.price_min || product.priceMin) !== (product.price_max || product.priceMax) ? ` - ${formatRupiah(product.price_max || product.priceMax)}` : ''}`;
+
+          return {
+            ...styleTemplate, 
+            ...product,       
+            icon: iconMap[product.icon] || styleTemplate.icon,
+            price: displayPrice,
+            features: parsedFeatures || styleTemplate.features, 
+            popular: styleTemplate.popular, 
+          }
+        })
         
         setProducts(formattedProducts)
       } catch (error) {
         console.error('Error fetching products:', error)
-        // Fallback ke hardcoded data jika API gagal
         setProducts(FALLBACK_PRODUCTS)
       } finally {
         setIsLoading(false)
@@ -120,13 +152,13 @@ export function ProductsSection() {
 
     fetchProducts()
   }, [])
+
   return (
     <section
       id="product"
       className="relative py-24 sm:py-32"
       aria-labelledby="products-heading"
     >
-      {/* Background decoration */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
@@ -137,7 +169,6 @@ export function ProductsSection() {
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <motion.div
           className="mx-auto max-w-2xl text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -163,7 +194,6 @@ export function ProductsSection() {
           </p>
         </motion.div>
 
-        {/* Cards */}
         <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
           {products.map((product, i) => {
             const Icon = product.icon
@@ -179,42 +209,36 @@ export function ProductsSection() {
                 viewport={{ once: true, margin: "-60px" }}
                 variants={cardVariants}
               >
-                {/* Popular badge */}
                 {product.popular && (
                   <div className="absolute -right-8 top-6 rotate-45 bg-primary px-10 py-1 text-xs font-bold text-primary-foreground shadow-md">
                     POPULER
                   </div>
                 )}
 
-                {/* Icon */}
                 <div
                   className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${product.color} text-white shadow-md`}
                 >
                   <Icon className="h-7 w-7" aria-hidden="true" />
                 </div>
 
-                {/* Title */}
                 <h3
                   className={`mt-6 text-2xl font-bold ${product.textColor}`}
                 >
                   {product.tier}
                 </h3>
 
-                {/* Price */}
                 <div className="mt-2 flex items-baseline gap-1">
                   <span className="text-3xl font-bold text-foreground">
                     {product.price}
                   </span>
                 </div>
 
-                {/* Divider */}
                 <div className="my-6 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-                {/* Features */}
                 <ul className="flex-1 space-y-3">
-                  {product.features.map((feature: string) => (
+                  {product.features.map((feature: string, index: number) => (
                     <li
-                      key={feature}
+                      key={index}
                       className="flex items-start gap-2.5 text-sm text-muted-foreground"
                     >
                       <svg
@@ -235,7 +259,6 @@ export function ProductsSection() {
                   ))}
                 </ul>
 
-                {/* CTA */}
                 <Link
                   href="#contact"
                   className={`mt-8 block w-full rounded-xl bg-gradient-to-r ${product.color} px-4 py-3 text-center text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
