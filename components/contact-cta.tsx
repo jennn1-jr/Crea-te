@@ -47,6 +47,9 @@ export function ContactCTA() {
   }, [])
 
 const emailAddr = "createartsh@gmail.com"
+  const emailSubject = encodeURIComponent("Pre-Order Crea'Te - Boneka Karakter Custom")
+  const emailBody = encodeURIComponent("Halo!\n\nSaya tertarik untuk melakukan pre-order boneka karakter custom dari Crea'Te.\n\nMohon informasikan:\n- Tipe/karakter yang diinginkan\n- Jumlah pesanan\n- Estimasi anggaran\n\nTerima kasih atas perhatiannya!")
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddr}&su=${emailSubject}&body=${emailBody}`
 
   useEffect(() => {
     fetchContact()
@@ -105,7 +108,9 @@ const emailAddr = "createartsh@gmail.com"
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 <a
-                href={`mailto:${emailAddr}`}
+                href={gmailLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-border bg-white/50 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-white/80 hover:-translate-y-0.5"
               >
                 Email Kami

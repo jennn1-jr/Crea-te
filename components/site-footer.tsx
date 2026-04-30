@@ -80,6 +80,9 @@ export function SiteFooter() {
   }, [])
 
 const emailAddr = "createartsh@gmail.com"
+  const emailSubject = encodeURIComponent("Informasi Pre-Order Crea'Te")
+  const emailBody = encodeURIComponent("Halo Crea'Te!\n\nSaya tertarik untuk melakukan pre-order. Mohon informasikan detailnya ya.\n\nTerima kasih!")
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddr}&su=${emailSubject}&body=${emailBody}`
 
   useEffect(() => {
     fetchContact()
@@ -166,7 +169,9 @@ const emailAddr = "createartsh@gmail.com"
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
               </a>
 <a
-                href={`mailto:${emailAddr}`}
+                href={gmailLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Email"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >
