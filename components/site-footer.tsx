@@ -63,6 +63,7 @@ export function SiteFooter() {
       if (!res.ok) throw new Error(`API error: ${res.status}`)
 
       const data = await res.json()
+      console.log("[Footer] Fetched contact data:", data)
 
       if (data && typeof data === "object" && !data.error) {
         setContact({
@@ -77,6 +78,8 @@ export function SiteFooter() {
       setLoading(false)
     }
   }, [])
+
+const emailAddr = "createartsh@gmail.com"
 
   useEffect(() => {
     fetchContact()
@@ -162,10 +165,8 @@ export function SiteFooter() {
               >
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a
-                href="mailto:createartsh@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
+<a
+                href={`mailto:${emailAddr}`}
                 aria-label="Email"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all duration-200 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:scale-110"
               >

@@ -128,11 +128,11 @@ INSERT INTO products (name, tier, price, description, features, image_url) VALUE
 -- Insert Contact Info (SESUAI PROPOSAL CREA'TE)
 INSERT INTO contacts (email, phone, address, instagram, city, tiktok_url, whatsapp_url) VALUES
 (
-  '25051204344@mhs.unesa.ac.id',
+  'createartsh@gmail.com',
   '081230594669',
-  'Jalan Mahameru, RT 04/RW 03, Ds. Ringinanom, Kec. Karangjati, Ngawi',
+  'Jalan Wide Raya, RT 02/RW 01, Ds. Sidowayah, Kec. Panekan, Magetan',
   '@create.arts',
-  'Ngawi',
+  'Magetan',
   'https://www.tiktok.com/@createartss',
   'https://wa.me/6281230594669'
 );

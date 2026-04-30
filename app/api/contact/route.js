@@ -24,9 +24,9 @@ export async function PUT(request) {
 
     await query(
       `UPDATE contacts 
-       SET email = ?, phone = ?, address = ?, instagram = ?, city = ?, tiktok_url = ?, whatsapp_url = ?
+       SET email = ?, phone = ?, address = ?, city = ?, tiktok_url = ?, whatsapp_url = ?
        WHERE id = 1`,
-      [email, phone, address, instagram, city, tiktok_url, whatsapp_url]
+      [email, phone, address, city, tiktok_url, whatsapp_url]
     );
 
     return Response.json({ success: true });
