@@ -331,7 +331,7 @@ export function HeroSection() {
       {/* ✨ Falling elements — Framer Motion driven */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-visible"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
         style={{ zIndex: 2 }}
       >
         {FALLING_ELEMENTS.map((el) => (
